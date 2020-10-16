@@ -8,11 +8,42 @@ class AppDemo extends StatelessWidget {
     // TODO: implement build
     return MaterialApp(
         title: 'Title',
-        home: Scaffold(
-          appBar: AppBar(title: Text('AppDemo -  Ejemplo')),
-          drawer: ScreenDrawer(),
-          body: SnackBarPage(),
-        ));
+        home: TabControllerWidget(),
+        // home:
+        //   Scaffold(
+        //     appBar: AppBar(title: Text('AppDemo -  Ejemplo')),
+        //     drawer: ScreenDrawer(),
+        //     body: SnackBarPage(),
+        //   ),
+    );
+  }
+}
+
+// Tabs
+class TabControllerWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return DefaultTabController(
+      length: 3,
+      child: Scaffold(
+        appBar: AppBar(
+          bottom: TabBar(
+            tabs:[
+              Tab(icon: Icon(Icons.directions_car)),
+              Tab(icon: Icon(Icons.directions_transit)),
+              Tab(icon: Icon(Icons.directions_bike)),
+            ]
+          )
+        ),
+        body: TabBarView(
+          children: [
+            Tab(icon: Icon(Icons.directions_car)),
+            Tab(icon: Icon(Icons.directions_transit)),
+            Tab(icon: Icon(Icons.directions_bike)),
+          ]
+        )
+      ),
+    );
   }
 }
 
