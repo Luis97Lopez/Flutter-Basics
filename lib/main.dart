@@ -26,7 +26,9 @@ class TabControllerWidget extends StatelessWidget {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
+        drawer: ScreenDrawer(),
         appBar: AppBar(
+          title: Text('AppDemo -  Ejemplo'),
           bottom: TabBar(
             tabs:[
               Tab(icon: Icon(Icons.directions_car)),
@@ -37,7 +39,7 @@ class TabControllerWidget extends StatelessWidget {
         ),
         body: TabBarView(
           children: [
-            Tab(icon: Icon(Icons.directions_car)),
+            SnackBarPage(),
             Tab(icon: Icon(Icons.directions_transit)),
             Tab(icon: Icon(Icons.directions_bike)),
           ]
