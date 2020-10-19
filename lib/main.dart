@@ -52,6 +52,26 @@ class TabControllerWidget extends StatelessWidget {
 }
 
 
+class AlternativeRoute extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("This is the 2ND Route")
+      ),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: (){
+            Navigator.pop(context);
+          },
+          child: Text('Go back')
+        )
+      )
+    );
+  }
+}
+
+
 // Tests with Assets Image
 class AssetsImageTabPage extends StatelessWidget{
   @override
@@ -88,13 +108,18 @@ class TabPageNumberTwo extends StatelessWidget{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Text('Tab #2')
+          title: Text('First Route')
       ),
       body: Center(
           child: Row(
               children: <Widget> [
-                FlatButton(onPressed: (){}, child: Icon(Icons.android)),
-                Text("Hola todos")
+                FlatButton(onPressed: (){
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => AlternativeRoute())
+                  );
+                }, child: Icon(Icons.android)),
+                Text("Open Route")
               ]
           )
       ),
