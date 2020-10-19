@@ -24,7 +24,7 @@ class TabControllerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 3,
+      length: 4,
       child: Scaffold(
         drawer: ScreenDrawer(),
         appBar: AppBar(
@@ -34,6 +34,7 @@ class TabControllerWidget extends StatelessWidget {
               Tab(icon: Icon(Icons.android_outlined)),
               Tab(icon: Icon(Icons.directions_transit)),
               Tab(icon: Icon(Icons.directions_bike)),
+              Tab(icon: Icon(Icons.airplay_sharp)),
             ]
           )
         ),
@@ -41,10 +42,24 @@ class TabControllerWidget extends StatelessWidget {
           children: [
             SnackBarPage(),
             TabPageNumberTwo(),
-            Tab(icon: Icon(Icons.directions_bike)),
+            ImageNetworkTabPage(),
+            ImageNetworkTabPage(),
           ]
         )
       ),
+    );
+  }
+}
+
+class ImageNetworkTabPage extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Image.network(
+          "https://i.ytimg.com/vi/6MthakDxovc/maxresdefault.jpg"
+        )
+      )
     );
   }
 }
