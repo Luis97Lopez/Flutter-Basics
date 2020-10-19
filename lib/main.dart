@@ -43,7 +43,7 @@ class TabControllerWidget extends StatelessWidget {
             SnackBarPage(),
             TabPageNumberTwo(),
             ImageNetworkTabPage(),
-            ImageNetworkTabPage(),
+            AssetsImageTabPage(),
           ]
         )
       ),
@@ -51,6 +51,23 @@ class TabControllerWidget extends StatelessWidget {
   }
 }
 
+
+// Tests with Assets Image
+class AssetsImageTabPage extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        body: Center(
+            child: Image(
+                image: AssetImage("images/jugadores.jpeg")
+            )
+        )
+    );
+  }
+}
+
+
+// Tests with Image Network
 class ImageNetworkTabPage extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
@@ -65,6 +82,7 @@ class ImageNetworkTabPage extends StatelessWidget{
 }
 
 
+// Tests with tab pages
 class TabPageNumberTwo extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
