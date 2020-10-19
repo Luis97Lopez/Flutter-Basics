@@ -31,7 +31,7 @@ class TabControllerWidget extends StatelessWidget {
           title: Text('AppDemo -  Ejemplo'),
           bottom: TabBar(
             tabs:[
-              Tab(icon: Icon(Icons.directions_car)),
+              Tab(icon: Icon(Icons.android_outlined)),
               Tab(icon: Icon(Icons.directions_transit)),
               Tab(icon: Icon(Icons.directions_bike)),
             ]
@@ -40,10 +40,30 @@ class TabControllerWidget extends StatelessWidget {
         body: TabBarView(
           children: [
             SnackBarPage(),
-            Tab(icon: Icon(Icons.directions_transit)),
+            TabPageNumberTwo(),
             Tab(icon: Icon(Icons.directions_bike)),
           ]
         )
+      ),
+    );
+  }
+}
+
+
+class TabPageNumberTwo extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+          title: Text('Tab #2')
+      ),
+      body: Center(
+          child: Row(
+              children: <Widget> [
+                FlatButton(onPressed: (){}, child: Icon(Icons.android)),
+                Text("Hola todos")
+              ]
+          )
       ),
     );
   }
