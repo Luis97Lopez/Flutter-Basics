@@ -8,7 +8,14 @@ class AppDemo extends StatelessWidget {
     // TODO: implement build
     return MaterialApp(
       title: 'Title',
-      home: TabControllerWidget(),
+      initialRoute: '/',
+      routes:{
+        '/': (context) => TabControllerWidget(),
+        '/second': (context) => SecondRoute(),
+        '/third': (context) => ThirdRoute(),
+        '/fourth': (context) => FourthRoute(),
+      }
+      // home: TabControllerWidget(),
       // home:
       //   Scaffold(
       //     appBar: AppBar(title: Text('AppDemo -  Ejemplo')),
@@ -82,10 +89,11 @@ class ThirdRoute extends StatelessWidget {
         body: Center(
             child: ElevatedButton(
                 onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => FourthRoute())
-                  );
+                  // Navigator.push(
+                  //     context,
+                  //     MaterialPageRoute(builder: (context) => FourthRoute())
+                  // );
+                    Navigator.pushNamed(context, '/fourth');
                 },
                 child: Text('Go to the 4th Route'))));
   }
@@ -125,10 +133,11 @@ class TabPageNumberTwo extends StatelessWidget {
               Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                 FlatButton(
                     onPressed: (){
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => SecondRoute())
-                        );
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(builder: (context) => SecondRoute())
+                        // );
+                        Navigator.pushNamed(context, '/second');
                       },
                     child: Icon(Icons.dangerous)),
                 Icon(Icons.arrow_back_outlined),
@@ -137,10 +146,11 @@ class TabPageNumberTwo extends StatelessWidget {
               Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                 FlatButton(
                   onPressed: (){
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => ThirdRoute())
-                      );
+                      // Navigator.push(
+                      //     context,
+                      //     MaterialPageRoute(builder: (context) => ThirdRoute())
+                      // );
+                      Navigator.pushNamed(context, '/third');
                     },
                   child: Icon(Icons.android)),
                 Icon(Icons.arrow_back_outlined),
