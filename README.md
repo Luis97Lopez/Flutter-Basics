@@ -7,4 +7,6 @@ Learn how to implement:
   - Images
   - Routes
   - Named Routes
+  - Parameters with Routes
+  - Generate Lists
 
