@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 
 void main() => runApp(AppDemo());
 
@@ -46,7 +47,7 @@ class TabControllerWidget extends StatelessWidget {
             SnackBarPage(),
             TabPageNumberTwo(),
             ImageNetworkTabPage(),
-            ToDoScreen(),
+            ToDoTabPage(),
           ])),
     );
   }
@@ -100,12 +101,76 @@ class ThirdRoute extends StatelessWidget {
 }
 
 
+class ToDo {
+  final String title;
+  final String description;
 
-class ToDoScreen extends StatelessWidget {
+  ToDo(this.title, this.description);
+}
+
+class ToDoTabPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ToDoScreen(
+      list: List.generate(20,
+              (i) => ToDo(
+                'ToDo $i',
+                'A description of what needs to be done for ToDo $i'
+              )
+      )
+    );
+  }
+}
+
+
+class ToDoScreen extends StatelessWidget{
+  final List<ToDo> list;
+
+  ToDoScreen({Key key, @required this.list}) : super(key:key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Center(child: Image(image: AssetImage("images/jugadores.jpeg"))));
+      appBar: AppBar(
+        title: Text('List of To Do')
+      ),
+      body: ListView.builder(
+        itemCount: list.length,
+        itemBuilder: (context, index) {
+            return ListTile(
+              title: Text(list[index].title),
+              onTap: (){
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => DetailScreen(),
+                    settings: RouteSettings(
+                        arguments: list[index]
+                    )
+                  )
+                );
+              }
+            );
+          }
+      )
+    );
+  }
+}
+
+class DetailScreen extends StatelessWidget{
+
+  @override
+  Widget build(BuildContext context) {
+    final ToDo toDo = ModalRoute.of(context).settings.arguments;
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(toDo.title)
+      ),
+      body: Padding(
+        padding: EdgeInsets.all(16.0),
+        child: Text(toDo.description)
+      )
+    );
   }
 }
 
