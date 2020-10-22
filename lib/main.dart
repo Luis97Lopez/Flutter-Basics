@@ -46,7 +46,7 @@ class TabControllerWidget extends StatelessWidget {
             SnackBarPage(),
             TabPageNumberTwo(),
             ImageNetworkTabPage(),
-            AssetsImageTabPage(),
+            ToDoScreen(),
           ])),
     );
   }
@@ -100,8 +100,8 @@ class ThirdRoute extends StatelessWidget {
 }
 
 
-// Tests with Assets Image
-class AssetsImageTabPage extends StatelessWidget {
+
+class ToDoScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -109,14 +109,22 @@ class AssetsImageTabPage extends StatelessWidget {
   }
 }
 
-// Tests with Image Network
+
+// Tests with Image Network and Assets Image
 class ImageNetworkTabPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: Center(
-            child: Image.network(
-                "https://i.ytimg.com/vi/6MthakDxovc/maxresdefault.jpg")));
+
+            child: Column(
+              children: [
+                  Center(child: Image(image: AssetImage("images/jugadores.jpeg"))),
+                  Center(child: Image.network( "https://i.ytimg.com/vi/6MthakDxovc/maxresdefault.jpg"))
+              ],
+            )
+      )
+    );
   }
 }
 
